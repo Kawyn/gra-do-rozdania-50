@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class InterfaceManager : MonoBehaviour
 {
-    private TextMeshProUGUI remainingTimeText;
-    private Image remainingTimeBar;
+    [SerializeField] private TextMeshProUGUI remainingTimeText;
+    [SerializeField] private Image remainingTimeBar;
 
     private List<Image> bullets;
 
@@ -33,8 +33,7 @@ public class InterfaceManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        return;
-        remainingTimeText.text = (GameManager.instance.remainingTime % 1).ToString() + "<#F2A154><size=40%>SEC";    
+        remainingTimeText.text = "<#F2A154>" + Mathf.Floor(GameManager.instance.remainingTime).ToString() + "<size=50%>/150<#D3D3D3>SEC";    
         remainingTimeBar.fillAmount = GameManager.instance.remainingTime / GameManager.instance.maxTime;
     }
 

@@ -1,34 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
-
 [RequireComponent(typeof(Rigidbody2D))]
 
 public class Player : MonoBehaviour
 {
     public static Player instance = null;
-    
+
     public float m_Speed = 5;
 
     private Rigidbody2D m_Rigidbody2D;
     private SpriteRenderer m_SpriteRenderer;
 
 
+    [SerializeField] private Gun defaultGun;
+
     [SerializeField] private Transform m_GunTransform;
-    [SerializeField] private SpriteRenderer m_GunSpriteRenderer;
+    [SerializeField] private SpriteRenderer gunSpriteRenderer;
 
     [SerializeField] private Gun _Gun;
+
+    public event EventHandler<OnGunChangeEventArgs> onGunChange;
+    public event EventHandler<OnGunShotEventArgs> onGunShot;
+
 
     public Gun m_Gun
     {
         get { return _Gun; }
         set
         {
-            m_GunSpriteRenderer.sprite = value.sprite;
+            onGunChange?.Invoke(this, new OnGunChangeEventArgs { gun = value });
+
             _Gun = value;
         }
     }
-
 
     public Animator m_Animator;
 
@@ -39,6 +45,11 @@ public class Player : MonoBehaviour
         m_Animator = GetComponent<Animator>();
 
         instance = this;
+
+        onGunChange += (object sender, OnGunChangeEventArgs args) => this.gunSpriteRenderer.sprite = args.gun.sprite;
+        onGunChange += (object sender, OnGunChangeEventArgs args) => args.gun.remainingBullets = args.gun.maxBullets;
+
+        m_Gun = defaultGun;
     }
 
     private void Update()
@@ -49,14 +60,17 @@ public class Player : MonoBehaviour
         bool flip = mousePosition.x > transform.position.x;
         
         m_SpriteRenderer.flipX = flip;
-        m_GunSpriteRenderer.flipY = flip;
+        gunSpriteRenderer.flipY = flip;
 
         m_GunTransform.right = -(mousePosition - (Vector2)transform.position);
         m_GunTransform.position = (mousePosition - (Vector2)transform.position).normalized + (Vector2)transform.position;
-      
-        if (Input.GetMouseButton(0))
-            m_Gun.Shot(mousePosition);
-    
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            m_Gun.Shot(m_GunTransform.position, mousePosition);
+            onGunShot?.Invoke(this, new OnGunShotEventArgs { gun = this.m_Gun });
+            
+        }
     }
 
     private void FixedUpdate()
@@ -69,3 +83,6 @@ public class Player : MonoBehaviour
         m_Rigidbody2D.velocity = direction * m_Speed;
     }
 }
+
+public class OnGunChangeEventArgs : EventArgs { public Gun gun; }
+public class OnGunShotEventArgs : EventArgs { public Gun gun; }

@@ -38,13 +38,16 @@ public class Player : MonoBehaviour
 
     public Animator m_Animator;
 
+    private void Awake()
+    {
+        instance = this;    
+    }
+
     private void Start()
     {
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
         m_Animator = GetComponent<Animator>();
-
-        instance = this;
 
         onGunChange += (object sender, OnGunChangeEventArgs args) => this.gunSpriteRenderer.sprite = args.gun.sprite;
         onGunChange += (object sender, OnGunChangeEventArgs args) => args.gun.remainingBullets = args.gun.maxBullets;
@@ -67,7 +70,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            m_Gun.Shot(m_GunTransform.position, mousePosition);
+            if (m_Gun.Shot(m_GunTransform.position, mousePosition)) 
             onGunShot?.Invoke(this, new OnGunShotEventArgs { gun = this.m_Gun });
             
         }

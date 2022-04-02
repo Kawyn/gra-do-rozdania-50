@@ -18,14 +18,10 @@ public class Bullet : MonoBehaviour
         {
             GameObject target = hit.transform.gameObject;
 
-            if (target.CompareTag("Wall"))
-            {
+            if (target.CompareTag("Enemy"))
                 throw new System.NotImplementedException();
-            }
-            else
-            {
-                Destroy(gameObject);  
-            }
+            else if (target.CompareTag("Wall"))
+                Destroy(gameObject);
         }
     }
 }

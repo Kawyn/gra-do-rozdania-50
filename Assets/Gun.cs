@@ -11,5 +11,5 @@ public abstract class Gun : ScriptableObject
 
     public Sprite sprite;
 
-    public abstract void Shot(Vector2 position, Vector2 target);
+    public abstract bool Shot(Vector2 position, Vector2 target);
 }

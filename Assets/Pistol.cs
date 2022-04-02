@@ -15,10 +15,10 @@ public class Pistol : Gun
         remainingBullets = maxBullets;
     }
 
-    public override void Shot(Vector2 position, Vector2 target)
+    public override bool Shot(Vector2 position, Vector2 target)
     {
         if (remainingBullets == 0)
-            return;
+            return false;
 
         Vector2 direction = target - position;
         direction.Normalize();
@@ -27,5 +27,6 @@ public class Pistol : Gun
         b.GetComponent<Bullet>().velocity = direction * speed;
 
         remainingBullets--;
+        return true;
     }
 }

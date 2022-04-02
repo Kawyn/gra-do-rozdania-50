@@ -12,3 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5055496dafa5f52408a5e1e542964a5f, type: 3}
   m_Name: new Pistol
   m_EditorClassIdentifier: 
+  maxBullets: 5
+  remainingBullets: 0
+  sprite: {fileID: 8537651536920830917, guid: a689b117225ac2a40b37f2a4d1530c6b, type: 3}
+  damage: 5
+  speed: 25
+  bullet: {fileID: 691865425408069958, guid: 746e9362cd4fab3418a2cda92e25bff9, type: 3}

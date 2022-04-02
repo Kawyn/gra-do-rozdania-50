@@ -8,10 +8,13 @@ public class Bullet : MonoBehaviour
 
     [SerializeField] private LayerMask mask;
 
+    [SerializeField] private GameObject particles;
+
     private void Update()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, velocity.normalized, velocity.magnitude * Time.deltaTime, mask);
 
+        transform.rotation.SetLookRotation(velocity);
         transform.Translate(velocity * Time.deltaTime);
 
         if (hit)
@@ -21,7 +24,12 @@ public class Bullet : MonoBehaviour
             if (target.CompareTag("Enemy"))
                 throw new System.NotImplementedException();
             else if (target.CompareTag("Wall"))
+            {
+                particles.transform.parent = null;
+                particles.SetActive(true);
                 Destroy(gameObject);
+            
+            }
         }
     }
 }

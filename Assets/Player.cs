@@ -30,9 +30,11 @@ public class Player : MonoBehaviour
         get { return _Gun; }
         set
         {
-            onGunChange?.Invoke(this, new OnGunChangeEventArgs { gun = value });
-
+            
             _Gun = value;
+
+            onGunChange?.Invoke(this, new OnGunChangeEventArgs { gun = _Gun });
+
         }
     }
 
@@ -43,6 +45,7 @@ public class Player : MonoBehaviour
         instance = this;    
     }
 
+    public ParticleSystem shellParticle;
     private void Start()
     {
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
@@ -51,6 +54,8 @@ public class Player : MonoBehaviour
 
         onGunChange += (object sender, OnGunChangeEventArgs args) => this.gunSpriteRenderer.sprite = args.gun.sprite;
         onGunChange += (object sender, OnGunChangeEventArgs args) => args.gun.remainingBullets = args.gun.maxBullets;
+
+        onGunShot += (object sender, OnGunShotEventArgs e) => shellParticle.Emit(1);
 
         m_Gun = defaultGun;
     }
@@ -70,10 +75,25 @@ public class Player : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (m_Gun.Shot(m_GunTransform.position, mousePosition)) 
-            onGunShot?.Invoke(this, new OnGunShotEventArgs { gun = this.m_Gun });
+            if (m_Gun.Shot(m_GunTransform.position, mousePosition))
+            {
+                onGunShot?.Invoke(this, new OnGunShotEventArgs { gun = this.m_Gun });
+
+                if (m_Gun.remainingBullets == 0)
+                {
+
+                    StartCoroutine(Reload(m_Gun.reloadTime));
+                }
+            }
             
         }
+    }
+
+    IEnumerator Reload(float time)
+    {
+        yield return new WaitForSeconds(time);
+        onGunChange?.Invoke(this, new OnGunChangeEventArgs { gun = _Gun });
+
     }
 
     private void FixedUpdate()

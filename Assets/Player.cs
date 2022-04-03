@@ -104,7 +104,13 @@ public class Player : MonoBehaviour
         onGunChange?.Invoke(this, new OnGunChangeEventArgs { gun = _Gun });
 
     }
-
+    public void Die()
+    {
+       
+        m_GunTransform.gameObject.SetActive(false);
+        this.m_Speed = 0;
+        m_Rigidbody2D.velocity = Vector2.zero;
+    }
     private void FixedUpdate()
     {
         Vector2 direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));

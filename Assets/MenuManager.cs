@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
@@ -6,7 +7,7 @@ using TMPro;
 public class MenuManager : MonoBehaviour
 {
     private int[] stats = { 0, 0, 0, 0 };
-
+    public Animator transiton;
     [SerializeField] private GameObject[] records;
     [SerializeField] private TextMeshProUGUI[] display;
 
@@ -43,6 +44,14 @@ public class MenuManager : MonoBehaviour
 
     public void StartGame()
     {
+        transiton.SetTrigger("In");
+        StartCoroutine(Load());
+        
+    }
+    IEnumerator Load()
+    {
+
+        yield return new WaitForSeconds(1.5f);
         SceneManager.LoadSceneAsync(1);
     }
 

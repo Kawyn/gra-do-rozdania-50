@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class BulletAmountPowerUp : Ware
 {
-    // Start is called before the first frame update
-    void Start()
+    protected override void OnBuy()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Debug.Log("s");
     }
 }

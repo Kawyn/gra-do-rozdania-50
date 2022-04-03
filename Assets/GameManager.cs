@@ -5,8 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject indicator;
-    [SerializeField] public float maxTime;
-    [SerializeField] public float remainingTime;
+    [SerializeField] public float maxTime = 150;
+    [SerializeField] public float remainingTime = 150;
 
 
     public GameObject imlazyenemy;

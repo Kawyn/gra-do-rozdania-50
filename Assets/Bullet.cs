@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public bool rotateTowardsDirection = true;
-
     [HideInInspector] public Vector2 velocity;
 
     public int damage = 10;
@@ -19,7 +17,6 @@ public class Bullet : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, velocity.normalized, velocity.magnitude * Time.deltaTime * 2, mask);
 
-        if(rotateTowardsDirection)
         transform.right = velocity;
         transform.position = transform.position + (Vector3)velocity * Time.deltaTime;
 
@@ -40,6 +37,11 @@ public class Bullet : MonoBehaviour
                 Destroy(gameObject);
             }
 
+            else if (target.CompareTag("Player"))
+            {
+                Player.instance.ReciveDamage(damage);
+            }
+
             else if (target.CompareTag("Wall"))
             {
                 if (shards)
@@ -52,7 +54,7 @@ public class Bullet : MonoBehaviour
                     dust.transform.parent = null;
                     dust.Stop();
                 }
-             
+
                 Destroy(gameObject);
             }
         }

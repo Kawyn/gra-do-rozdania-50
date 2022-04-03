@@ -22,7 +22,8 @@ public class InterfaceManager : MonoBehaviour
 
 
 
-
+    public static bool displayBuyIndicator = false;
+    [SerializeField] private GameObject buyIndicator;
 
     private void Awake()
     {
@@ -40,6 +41,7 @@ public class InterfaceManager : MonoBehaviour
 
     private void Update()
     {
+        buyIndicator.SetActive(displayBuyIndicator);
         UpdateRemainingTimeDisplay();
     }
 

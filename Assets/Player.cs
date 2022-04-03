@@ -44,6 +44,10 @@ public class Player : MonoBehaviour
     {
         instance = this;    
     }
+    public void ReciveDamage(int damage)
+    {
+
+    }
 
     public ParticleSystem shellParticle;
     private void Start()

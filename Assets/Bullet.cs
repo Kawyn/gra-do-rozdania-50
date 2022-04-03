@@ -13,10 +13,7 @@ public class Bullet : MonoBehaviour
     private void Update()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, velocity.normalized, velocity.magnitude * Time.deltaTime, mask);
-
-        transform.rotation.SetLookRotation(velocity);
-        transform.Translate(velocity * Time.deltaTime);
-
+      
         if (hit)
         {
             GameObject target = hit.transform.gameObject;
@@ -30,6 +27,11 @@ public class Bullet : MonoBehaviour
                 Destroy(gameObject);
             
             }
+        }
+        else
+        {
+            transform.right = velocity;
+            transform.position = transform.position + (Vector3)velocity * Time.deltaTime;
         }
     }
 }

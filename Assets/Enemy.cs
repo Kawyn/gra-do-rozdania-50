@@ -6,6 +6,9 @@ public abstract class Enemy : MonoBehaviour
     public int health;
 
 
+    protected abstract void Move();
+    protected abstract void Attack();
+
     public void ReciveDamage(int damage)
     {
         health -= damage;

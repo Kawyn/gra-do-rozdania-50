@@ -2236,7 +2236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f01215ab1259e1b4398665802849f276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Speed: 5
+  m_Speed: 8
   defaultGun: {fileID: 11400000, guid: fad5c6009ea29e44da0ec8f71b8147d7, type: 2}
   m_GunTransform: {fileID: 1739532675}
   gunSpriteRenderer: {fileID: 1739532676}
@@ -2256,7 +2256,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.1
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}

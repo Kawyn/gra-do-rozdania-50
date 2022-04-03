@@ -23,17 +23,30 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        remainingTime -= Time.deltaTime;
+        if (remainingTime > maxTime)
+            remainingTime = maxTime;
+            remainingTime -= Time.deltaTime;
         time += Time.deltaTime;
 
+
+        if (time < 0)
+        {
+
+        }
         if (Mathf.Floor(time % 10) == 0)
         {
             StartCoroutine(SpawnEnemy(imlazyenemy, new Vector2(
               Random.Range(minSpawnCoords.x, maxSpawnCoords.x),
               Random.Range(minSpawnCoords.y, maxSpawnCoords.y)
-      )      ));
+            )));
+            
             time++;
         }
+    }
+
+    private void GameOver()
+    {
+
     }
     
     IEnumerator SpawnEnemy(GameObject enemy, Vector2 position)

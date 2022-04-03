@@ -217,8 +217,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fd6d52d48e584a4e9eed6bb9deb8020, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
-  health: 5
+  timeDrop: 10
+  maxHealth: 10
+  health: 10
   bulletPrefab: {fileID: 6770874421868093531, guid: e788f06e5e68c6d4d8dbb47b93272a65, type: 3}
   timeBetweenShots: 2
   velocityModifier: 5

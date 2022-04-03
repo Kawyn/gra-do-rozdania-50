@@ -14,7 +14,9 @@ public  abstract class Ware : MonoBehaviour
     {
         message.text = gameObject.name + " - " + price + " sec";
         popup.gameObject.SetActive(true);
-        
+           
+        GetComponent<Animator>().SetTrigger("Shine");
+
         InterfaceManager.displayBuyIndicator = true;
     }
 

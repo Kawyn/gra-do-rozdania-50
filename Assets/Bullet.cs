@@ -28,18 +28,14 @@ public class Bullet : MonoBehaviour
             {
                 target.GetComponent<Enemy>().ReciveDamage(damage);
 
-                if (dust)
-                {
-                    dust.transform.parent = null;
-                    dust.Stop();
-                }
-
-                Destroy(gameObject);
+                Selfdestruction();
             }
 
             else if (target.CompareTag("Player"))
             {
                 Player.instance.ReciveDamage(damage);
+            
+                Selfdestruction();
             }
 
             else if (target.CompareTag("Wall"))
@@ -49,14 +45,20 @@ public class Bullet : MonoBehaviour
                     shards.transform.parent = null;
                     shards.Play();
                 }
-                if (dust)
-                {
-                    dust.transform.parent = null;
-                    dust.Stop();
-                }
 
-                Destroy(gameObject);
+                Selfdestruction();
             }
         }
+    }
+
+    private void Selfdestruction()
+    {
+        if (dust)
+        {
+            dust.transform.parent = null;
+            dust.Stop();
+        }
+     
+        Destroy(gameObject);
     }
 }

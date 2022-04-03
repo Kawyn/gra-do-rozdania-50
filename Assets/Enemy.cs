@@ -3,6 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public abstract class Enemy : MonoBehaviour
 {
+    [SerializeField] private int timeDrop = 10;
+
     [SerializeField] private int maxHealth;
     public int health;
 
@@ -13,6 +15,8 @@ public abstract class Enemy : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+
+        health = maxHealth;
     }
 
     protected void Update()
@@ -27,5 +31,15 @@ public abstract class Enemy : MonoBehaviour
     public void ReciveDamage(int damage)
     {
         health -= damage;
+
+        if (health <= 0)
+            Die();
+    }   
+
+    protected void Die() {
+
+        GameManager.instance.remainingTime += timeDrop;
+
+        Destroy(gameObject);
     }
 }

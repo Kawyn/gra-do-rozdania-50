@@ -25,6 +25,7 @@ public class Pistol : Gun
 
         GameObject b = Instantiate(bullet, position, Quaternion.identity);
         b.GetComponent<Bullet>().velocity = direction * speed;
+        b.GetComponent<Bullet>().damage = damage;
 
         remainingBullets--;
 

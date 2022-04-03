@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
     }
     public void ReciveDamage(int damage)
     {
-
+        GameManager.instance.remainingTime -= damage;
     }
 
     public ParticleSystem shellParticle;

@@ -33,17 +33,6 @@ public class InterfaceManager : MonoBehaviour
         Player.instance.onGunShot += UpdateRemainingBulletsDisplay;
     }
 
-    public Animator transition;
-    public static void TransitionIn()
-    {
-
-        instance.transition.SetTrigger("In");
-    }
-    public static void TransitionOut()
-    {
-        instance.transition.SetTrigger("Out");
-
-    }
 
     private void Start()
     {

@@ -255,67 +255,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 30609063}
   m_CullTransparentMesh: 1
---- !u!1001 &30714953
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3853237943859930081, guid: 05c609509b51b6449a90f4d884451064, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3853237943859930081, guid: 05c609509b51b6449a90f4d884451064, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3853237943859930081, guid: 05c609509b51b6449a90f4d884451064, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3853237943859930081, guid: 05c609509b51b6449a90f4d884451064, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3853237943859930081, guid: 05c609509b51b6449a90f4d884451064, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3853237943859930081, guid: 05c609509b51b6449a90f4d884451064, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3853237943859930081, guid: 05c609509b51b6449a90f4d884451064, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3853237943859930081, guid: 05c609509b51b6449a90f4d884451064, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3853237943859930081, guid: 05c609509b51b6449a90f4d884451064, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3853237943859930081, guid: 05c609509b51b6449a90f4d884451064, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3853237943859930081, guid: 05c609509b51b6449a90f4d884451064, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3853237943859930111, guid: 05c609509b51b6449a90f4d884451064, type: 3}
-      propertyPath: m_Name
-      value: GameObject
-      objectReference: {fileID: 0}
-    - target: {fileID: 3853237943859930111, guid: 05c609509b51b6449a90f4d884451064, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 05c609509b51b6449a90f4d884451064, type: 3}
 --- !u!1 &44865277
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,7 +579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AssetsPPU: 8
+  m_AssetsPPU: 100
   m_RefResolutionX: 320
   m_RefResolutionY: 180
   m_UpscaleRT: 1
@@ -916,11 +855,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 599803979}
   m_CullTransparentMesh: 1
---- !u!95 &644609076 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3853237943859930080, guid: 05c609509b51b6449a90f4d884451064, type: 3}
-  m_PrefabInstance: {fileID: 30714953}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &658528582
 GameObject:
   m_ObjectHideFlags: 0
@@ -2188,8 +2122,8 @@ Canvas:
   m_GameObject: {fileID: 1703733987}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
-  m_Camera: {fileID: 442344703}
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -2198,7 +2132,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!1 &1759977328
 GameObject:
@@ -2275,7 +2209,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738991a71b5cb8d46a3fd028280ff747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transiton: {fileID: 644609076}
   records:
   - {fileID: 1055504037}
   - {fileID: 1341787216}

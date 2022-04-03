@@ -22,9 +22,7 @@ public abstract class Enemy : MonoBehaviour
     protected void Update()
     {
         Move();
-
-        if (GameManager.instance.isDead == false)
-            Attack();
+        Attack();
     }
 
     protected abstract void Move();

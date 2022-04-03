@@ -5,8 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "new Pistol", menuName = "Guns/Pistol")]
 public class Pistol : Gun
 {
-
-    public float reloadTime = 1;
     public int damage = 5;
     public float speed = 25;
 

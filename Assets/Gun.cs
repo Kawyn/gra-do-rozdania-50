@@ -7,7 +7,6 @@ public abstract class Gun : ScriptableObject
 {
     public int maxBullets;
     public int remainingBullets;
-
     public float reloadTime = 1f;
 
 

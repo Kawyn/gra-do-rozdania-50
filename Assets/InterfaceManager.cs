@@ -64,10 +64,18 @@ public class InterfaceManager : MonoBehaviour
             remainingBullets[i].transform.localPosition = new Vector3(0, 0, 0) + (Vector3)remainingBulletsOffset * i + (Vector3)remainingBulletsStart;
         }
 
+        remainingBullets[e.gun.maxBullets - 1].transform.localPosition += new Vector3(0, 5, 0);
+
     }
 
     private void UpdateRemainingBulletsDisplay(object sender, OnGunShotEventArgs e)
     {
+
+        if (e.gun.remainingBullets > 0)
+            remainingBullets[e.gun.remainingBullets - 1].transform.localPosition += new Vector3(0, 5, 0);
+    
+        remainingBullets[e.gun.remainingBullets].transform.localPosition += new Vector3(0, -5, 0);
+
         Destroy(remainingBullets[e.gun.remainingBullets].transform.GetChild(0).gameObject);
     }
 

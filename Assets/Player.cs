@@ -60,6 +60,7 @@ public class Player : MonoBehaviour
         m_Gun = defaultGun;
     }
 
+    public LayerMask wallMask;
     private void Update()
     {
 
@@ -75,6 +76,10 @@ public class Player : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            RaycastHit2D hit = Physics2D.Linecast(transform.position, m_GunTransform.position, wallMask);
+            if (hit)
+                return;
+
             if (m_Gun.Shot(m_GunTransform.position, mousePosition))
             {
                 onGunShot?.Invoke(this, new OnGunShotEventArgs { gun = this.m_Gun });

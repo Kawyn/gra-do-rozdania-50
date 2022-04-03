@@ -2,36 +2,56 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public int damage = 10;
-
     [HideInInspector] public Vector2 velocity;
+
+    public int damage = 10;
 
     [SerializeField] private LayerMask mask;
 
-    [SerializeField] private GameObject particles;
+    [Space]
+    [SerializeField] private ParticleSystem shards;
+    [SerializeField] private ParticleSystem dust;
+
 
     private void Update()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, velocity.normalized, velocity.magnitude * Time.deltaTime, mask);
-      
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, velocity.normalized, velocity.magnitude * Time.deltaTime * 2, mask);
+
+        transform.right = velocity;
+        transform.position = transform.position + (Vector3)velocity * Time.deltaTime;
+
         if (hit)
         {
             GameObject target = hit.transform.gameObject;
 
             if (target.CompareTag("Enemy"))
-                throw new System.NotImplementedException();
+            {
+                target.GetComponent<Enemy>().ReciveDamage(damage);
+
+                if (dust)
+                {
+                    dust.transform.parent = null;
+                    dust.Stop();
+                }
+
+                Destroy(gameObject);
+            }
+
             else if (target.CompareTag("Wall"))
             {
-                particles.transform.parent = null;
-                particles.SetActive(true);
+                if (shards)
+                {
+                    shards.transform.parent = null;
+                    shards.Play();
+                }
+                if (dust)
+                {
+                    dust.transform.parent = null;
+                    dust.Stop();
+                }
+             
                 Destroy(gameObject);
-            
             }
-        }
-        else
-        {
-            transform.right = velocity;
-            transform.position = transform.position + (Vector3)velocity * Time.deltaTime;
         }
     }
 }

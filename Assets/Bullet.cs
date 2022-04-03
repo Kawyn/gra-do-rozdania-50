@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public bool rotateTowardsDirection = true;
+
     [HideInInspector] public Vector2 velocity;
 
     public int damage = 10;
@@ -17,6 +19,7 @@ public class Bullet : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, velocity.normalized, velocity.magnitude * Time.deltaTime * 2, mask);
 
+        if(rotateTowardsDirection)
         transform.right = velocity;
         transform.position = transform.position + (Vector3)velocity * Time.deltaTime;
 

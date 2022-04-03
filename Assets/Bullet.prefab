@@ -79,7 +79,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.75, y: 0.5}
+  m_Size: {x: 0.625, y: 0.375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa01159fff1bb8c4b917af75d62e344e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
   velocity: {x: 0, y: 0}
+  damage: 10
   mask:
     serializedVersion: 2
     m_Bits: 320

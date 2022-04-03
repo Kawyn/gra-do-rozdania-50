@@ -3,14 +3,16 @@ using TMPro;
 
 public  abstract class Ware : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI popup;
+    [SerializeField] private GameObject popup;
+    [SerializeField] private TextMeshProUGUI message;
+
     [SerializeField] private float price;
 
     protected abstract void OnBuy();
 
     private void OnMouseEnter()
     {
-        popup.text = gameObject.name + " - " + price + " sec";
+        message.text = gameObject.name + " - " + price + " sec";
         popup.gameObject.SetActive(true);
         
         InterfaceManager.displayBuyIndicator = true;

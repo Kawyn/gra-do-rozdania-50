@@ -218,12 +218,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fd6d52d48e584a4e9eed6bb9deb8020, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeDrop: 10
-  maxHealth: 10
-  health: 10
+  timeDrop: 7
+  maxHealth: 12
+  health: 12
   bulletPrefab: {fileID: 6770874421868093531, guid: e788f06e5e68c6d4d8dbb47b93272a65, type: 3}
-  timeBetweenShots: 3
-  velocityModifier: 5
+  timeBetweenShots: 3.5
+  velocityModifier: 4.5
   xVelocityOverTime:
     serializedVersion: 2
     m_Curve: []

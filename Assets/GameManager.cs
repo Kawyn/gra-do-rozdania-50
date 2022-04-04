@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
             nextWaveTime += Time.deltaTime;
         }
 
-        if (waves.Count < wave)
+        if (waves.Count > wave)
         {
             if (nextWaveTime > waves[wave].time)
             {

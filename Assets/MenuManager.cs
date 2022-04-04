@@ -12,11 +12,11 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject exit;
 
     public Animator transition;
+  
     private void Start()
     {
         if (Stats.stats[0] == 0)
             transition.gameObject.SetActive(false);
-
         for (int i = 0; i < 4; i++)
         {
             if (PlayerPrefs.GetInt(i.ToString(), 0) < Stats.stats[i])

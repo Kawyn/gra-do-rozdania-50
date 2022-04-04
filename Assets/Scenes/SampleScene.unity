@@ -2417,6 +2417,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 156403835689635138, guid: 366bb36f2cc23b14e90d7b4542075606, type: 3}
+      propertyPath: m_Color.b
+      value: 0.32941177
+      objectReference: {fileID: 0}
+    - target: {fileID: 156403835689635138, guid: 366bb36f2cc23b14e90d7b4542075606, type: 3}
+      propertyPath: m_Color.g
+      value: 0.6313726
+      objectReference: {fileID: 0}
+    - target: {fileID: 156403835689635138, guid: 366bb36f2cc23b14e90d7b4542075606, type: 3}
+      propertyPath: m_Color.r
+      value: 0.9490197
+      objectReference: {fileID: 0}
     - target: {fileID: 156403836545891441, guid: 366bb36f2cc23b14e90d7b4542075606, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2797,7 +2809,7 @@ Transform:
   - {fileID: 186296260}
   - {fileID: 1826079891}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &962505586 stripped
 GameObject:
@@ -8780,7 +8792,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7991350573176454139, guid: ea69678939ca399438a275ffe28ac95d, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7991350573176454139, guid: ea69678939ca399438a275ffe28ac95d, type: 3}
       propertyPath: m_LocalPosition.x

@@ -54,7 +54,7 @@ public class Slime : Enemy
 
         if (Mathf.Floor(time % (timeBetweenShots + 1)) == 0)
         {
-
+            
             time += 1;
             StartCoroutine(AnimationSync());
         }
@@ -66,7 +66,7 @@ public class Slime : Enemy
         animator.SetTrigger("Attack");
 
         yield return new WaitForSeconds(0.5f);
-
+        GameManager.instance.audioSource.PlayOneShot(GameManager.instance.enemyShot);
         Vector2 direction = Player.instance.transform.position - transform.position;
         direction.Normalize();
 

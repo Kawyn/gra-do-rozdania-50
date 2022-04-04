@@ -70,6 +70,7 @@ public class TriO : Enemy
 
         Vector2 direction = Player.instance.transform.position - transform.position;
         direction.Normalize();
+        GameManager.instance.audioSource.PlayOneShot(GameManager.instance.enemyShot);
 
         GameObject b = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         b.GetComponent<Bullet>().velocity = direction * 25;

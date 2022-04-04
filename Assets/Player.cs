@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
     }
     public void ReciveDamage(int damage)
     {
+        GameManager.instance.audioSource.PlayOneShot(GameManager.instance.reciveDmgClip);
+
         GameManager.instance.remainingTime -= damage;
     }
 
@@ -110,6 +112,7 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
+        GameManager.instance.audioSource.PlayOneShot(GameManager.instance.dieClip);
         Destroy(shadow);
         m_Animator.SetTrigger("Die");
         Destroy(m_GunTransform.gameObject);

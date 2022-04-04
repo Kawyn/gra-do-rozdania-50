@@ -18,6 +18,8 @@ public  abstract class Ware : MonoBehaviour
         GetComponent<Animator>().SetTrigger("Shine");
 
         InterfaceManager.displayBuyIndicator = true;
+        GameManager.instance.audioSource.PlayOneShot(GameManager.instance.mouseOverUpgradeCLip);
+
     }
 
     private void OnMouseExit()
@@ -36,6 +38,8 @@ public  abstract class Ware : MonoBehaviour
                 Stats.stats[3]++;
                 GameManager.instance.remainingTime -= price;
                 OnBuy();
+                GameManager.instance.audioSource.PlayOneShot(GameManager.instance.buyClip);
+
             }
         }
     }

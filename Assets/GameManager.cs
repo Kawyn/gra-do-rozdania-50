@@ -25,6 +25,15 @@ public class GameManager : MonoBehaviour
     public List<Wave> waves = new List<Wave>();
 
 
+    public AudioClip shotClip;
+    public AudioClip reciveDmgClip;
+    public AudioClip mouseOverUpgradeCLip;
+    public AudioClip buyClip;
+    public AudioClip enemyShot;
+
+
+    public AudioClip dieClip;
+
     [SerializeField] private GameObject indicator;
     [SerializeField] public float maxTime = 150;
     [SerializeField] public float remainingTime = 150;
@@ -50,14 +59,14 @@ public class GameManager : MonoBehaviour
         Stats.stats = new int[] { 0, 0, 0, 0 };
         remainingTime = maxTime;
         timeforspawn = 1;
+        Player.instance.onGunShot += (object sender, OnGunShotEventArgs e) => audioSource.PlayOneShot(shotClip);
         
     }
-
+    public    AudioSource audioSource;
     private float timeforspawn;
     public bool gameOver = false;
     private void Update()
     {
-
 
         if (remainingTime <= 1)
         {
@@ -67,7 +76,7 @@ public class GameManager : MonoBehaviour
             return;
 
         }
-
+        
         else
         {
             if (remainingTime > maxTime)

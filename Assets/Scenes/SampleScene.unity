@@ -8460,6 +8460,7 @@ MonoBehaviour:
   imlazyenemy: {fileID: 5746246944611112913, guid: c0d1c86558be1e342a1554ad90a8bdcc, type: 3}
   minSpawnCoords: {x: -13, y: -7}
   maxSpawnCoords: {x: 13, y: 6}
+  nextSpawntime: 5
   gameOver: 0
 --- !u!1 &1922325154 stripped
 GameObject:

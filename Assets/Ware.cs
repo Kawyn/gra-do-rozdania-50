@@ -33,6 +33,7 @@ public  abstract class Ware : MonoBehaviour
         {
             if (GameManager.instance.remainingTime > price)
             {
+                Stats.stats[3]++;
                 GameManager.instance.remainingTime -= price;
                 OnBuy();
             }

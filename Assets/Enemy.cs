@@ -22,7 +22,9 @@ public abstract class Enemy : MonoBehaviour
     protected void Update()
     {
         Move();
-        Attack();
+
+        if (!GameManager.instance.gameOver)
+            Attack();
     }
 
     protected abstract void Move();
@@ -38,7 +40,8 @@ public abstract class Enemy : MonoBehaviour
 
     protected void Die() {
 
-        GameManager.instance.remainingTime += timeDrop;
+        GameManager.instance.remainingTime += timeDrop + GameManager.instance.dropModifier;
+        Stats.stats[1]++;
 
         Destroy(gameObject);
     }

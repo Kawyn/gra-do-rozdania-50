@@ -14,29 +14,14 @@ public class Player : MonoBehaviour
     private SpriteRenderer m_SpriteRenderer;
 
 
-    [SerializeField] private Gun defaultGun;
 
     [SerializeField] private Transform m_GunTransform;
     [SerializeField] private SpriteRenderer gunSpriteRenderer;
 
-    [SerializeField] private Gun _Gun;
+    [SerializeField] public Pistol pistol;
 
     public event EventHandler<OnGunChangeEventArgs> onGunChange;
     public event EventHandler<OnGunShotEventArgs> onGunShot;
-
-
-    public Gun m_Gun
-    {
-        get { return _Gun; }
-        set
-        {
-            
-            _Gun = value;
-
-            onGunChange?.Invoke(this, new OnGunChangeEventArgs { gun = _Gun });
-
-        }
-    }
 
     public Animator m_Animator;
 
@@ -59,15 +44,20 @@ public class Player : MonoBehaviour
         onGunChange += (object sender, OnGunChangeEventArgs args) => this.gunSpriteRenderer.sprite = args.gun.sprite;
         onGunChange += (object sender, OnGunChangeEventArgs args) => args.gun.remainingBullets = args.gun.maxBullets;
 
-        onGunShot += (object sender, OnGunShotEventArgs e) => shellParticle.Emit(1);
+        onGunShot += (object sender, OnGunShotEventArgs e) => shellParticle.Play();
 
-        m_Gun = defaultGun;
+        onGunChange?.Invoke(this, new OnGunChangeEventArgs { gun = pistol });
     }
+    public GameObject shadow;
 
     public LayerMask wallMask;
     private void Update()
     {
+        if (GameManager.instance.gameOver)
+        {
 
+            return;
+        }
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         bool flip = mousePosition.x > transform.position.x;
@@ -84,29 +74,60 @@ public class Player : MonoBehaviour
             if (hit)
                 return;
 
-            if (m_Gun.Shot(m_GunTransform.position, mousePosition))
+            if (pistol.Shot(m_GunTransform.position, mousePosition))
             {
-                onGunShot?.Invoke(this, new OnGunShotEventArgs { gun = this.m_Gun });
+                onGunShot?.Invoke(this, new OnGunShotEventArgs { gun = pistol });
 
-                if (m_Gun.remainingBullets == 0)
+                if (pistol.remainingBullets == 0)
                 {
 
-                    StartCoroutine(Reload(m_Gun.reloadTime));
+                    StartCoroutine(Reload(pistol.reloadTime));
                 }
             }
             
         }
     }
+    public GameObject shell;
+    private void LateUpdate()
+    {
+        ParticleSystem.Particle[] particles = new ParticleSystem.Particle[100];
 
+        int numParticelsAlive = shellParticle.GetParticles(particles);
+
+        for (int i = 0; i < numParticelsAlive; i++)
+        {
+            if(particles[i].remainingLifetime <= 0.1f && particles[i].remainingLifetime != 0)
+            {
+                Debug.Log(particles[i].remainingLifetime);
+                 Instantiate(shell, particles[i].position, Quaternion.identity);
+                particles[i].remainingLifetime = -1;
+            }
+        }
+
+        shellParticle.SetParticles(particles);
+    }
+
+
+    public void Die()
+    {
+        Destroy(shadow);
+        m_Animator.SetTrigger("Die");
+        Destroy(m_GunTransform.gameObject);
+        m_Rigidbody2D.velocity = Vector2.zero;
+    }
     IEnumerator Reload(float time)
     {
         yield return new WaitForSeconds(time);
-        onGunChange?.Invoke(this, new OnGunChangeEventArgs { gun = _Gun });
+        if(!GameManager.instance.gameOver)
+        onGunChange?.Invoke(this, new OnGunChangeEventArgs { gun = pistol });
 
     }
 
     private void FixedUpdate()
     {
+        if (GameManager.instance.gameOver)
+            return;
+
         Vector2 direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         direction = Vector2.ClampMagnitude(direction, 1);
 
@@ -116,5 +137,5 @@ public class Player : MonoBehaviour
     }
 }
 
-public class OnGunChangeEventArgs : EventArgs { public Gun gun; }
-public class OnGunShotEventArgs : EventArgs { public Gun gun; }
+public class OnGunChangeEventArgs : EventArgs { public Pistol gun; }
+public class OnGunShotEventArgs : EventArgs { public Pistol gun; }

@@ -12,7 +12,7 @@ public class Slime : Enemy
     [SerializeField] private AnimationCurve xVelocityOverTime;
     [SerializeField] private AnimationCurve yVelocityOverTime;
 
-    private float time;
+    private float time = -2;
 
     protected override void Move()
     {

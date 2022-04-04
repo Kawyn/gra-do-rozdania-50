@@ -14,6 +14,9 @@ TextureImporter:
   - first:
       213: -2847132006821712795
     second: postac-death-Sheet_4
+  - first:
+      213: -106204700315345253
+    second: postac-death-Sheet_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -109,9 +112,9 @@ TextureImporter:
         x: 7
         y: 1
         width: 10
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 8
+      alignment: 9
+      pivot: {x: 0.8, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -130,9 +133,9 @@ TextureImporter:
         x: 30
         y: 1
         width: 11
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 8
+      alignment: 9
+      pivot: {x: 0.8181819, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -151,9 +154,9 @@ TextureImporter:
         x: 53
         y: 1
         width: 12
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 8
+      alignment: 9
+      pivot: {x: 0.8333334, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -171,10 +174,10 @@ TextureImporter:
         serializedVersion: 2
         x: 77
         y: 1
-        width: 40
-        height: 5
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 13
+        height: 8
+      alignment: 9
+      pivot: {x: 0.84615386, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -182,6 +185,27 @@ TextureImporter:
       bones: []
       spriteID: 56c2fb84684fc78d0800000000000000
       internalID: -2847132006821712795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: postac-death-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 1
+        width: 16
+        height: 8
+      alignment: 9
+      pivot: {x: 0.875, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9e1a34436fa68ef0800000000000000
+      internalID: -106204700315345253
       vertices: []
       indices: 
       edges: []

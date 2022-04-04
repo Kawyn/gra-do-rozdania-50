@@ -27,7 +27,7 @@ public class Bullet : MonoBehaviour
             if (target.CompareTag("Enemy"))
             {
                 target.GetComponent<Enemy>().ReciveDamage(damage);
-
+                Stats.stats[2]++;
                 Selfdestruction();
             }
 

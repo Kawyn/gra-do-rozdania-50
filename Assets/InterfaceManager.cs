@@ -19,8 +19,7 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private Vector2 remainingBulletsStart;
     [SerializeField] private Vector2 remainingBulletsOffset;
 
-
-
+    public Animator transition;
 
     public static bool displayBuyIndicator = false;
     [SerializeField] private GameObject buyIndicator;
@@ -63,9 +62,9 @@ public class InterfaceManager : MonoBehaviour
         for (int i = 0; i < e.gun.maxBullets; i++)
         {
             remainingBullets.Add(Instantiate(remainingBulletsPrefab, remainingBulletsHolder));
-            remainingBullets[i].transform.localPosition = new Vector3(0, 0, 0) + (Vector3)remainingBulletsOffset * i + (Vector3)remainingBulletsStart;
+            remainingBullets[i].transform.localPosition = (Vector3)remainingBulletsOffset * i + (Vector3)remainingBulletsStart;
         }
-
+        Debug.Log(remainingBullets.Count + " " +  e.gun.maxBullets);
         remainingBullets[e.gun.maxBullets - 1].transform.localPosition += new Vector3(0, 5, 0);
 
     }
@@ -79,6 +78,15 @@ public class InterfaceManager : MonoBehaviour
         remainingBullets[e.gun.remainingBullets].transform.localPosition += new Vector3(0, -5, 0);
 
         Destroy(remainingBullets[e.gun.remainingBullets].transform.GetChild(0).gameObject);
+    }
+
+    public void AddEmptyBullet()
+    {
+        remainingBullets.Add(Instantiate(remainingBulletsPrefab, remainingBulletsHolder));
+        remainingBullets[remainingBullets.Count - 1].transform.localPosition = (Vector3)remainingBulletsOffset * (remainingBullets.Count - 1) + (Vector3)remainingBulletsStart;
+
+        Destroy(remainingBullets[remainingBullets.Count - 1].transform.GetChild(0).gameObject);
+
     }
 
     public static InterfaceManager instance;

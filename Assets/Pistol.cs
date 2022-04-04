@@ -2,20 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "new Pistol", menuName = "Guns/Pistol")]
-public class Pistol : Gun
+[System.Serializable]
+public class Pistol:MonoBehaviour
 {
+    public int maxBullets;
+    public int remainingBullets;
+    public float reloadTime = 1f;
+
+
+    public Sprite sprite;
+
     public int damage = 5;
+    
     public float speed = 25;
 
     public GameObject bullet;
 
-    private void Awake()
-    {
-        remainingBullets = maxBullets;
-    }
-
-    public override bool Shot(Vector2 position, Vector2 target)
+   
+    public  bool Shot(Vector2 position, Vector2 target)
     {
         if (remainingBullets == 0)
             return false;

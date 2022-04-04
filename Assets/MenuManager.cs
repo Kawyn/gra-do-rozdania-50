@@ -1,24 +1,25 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
-    private int[] stats = { 0, 0, 0, 0 };
-
     [SerializeField] private GameObject[] records;
     [SerializeField] private TextMeshProUGUI[] display;
 
     [SerializeField] private GameObject exit;
 
+    public Animator transition;
     private void Start()
     {
+        if (Stats.stats[0] == 0)
+            transition.gameObject.SetActive(false);
+
         for (int i = 0; i < 4; i++)
         {
-            stats[i] = PlayerPrefs.GetInt(i.ToString(), 0);
-
-            if (stats[i] < Stats.stats[i])
+            if (PlayerPrefs.GetInt(i.ToString(), 0) < Stats.stats[i])
             {
                 PlayerPrefs.SetInt(i.ToString(), Stats.stats[i]);
                 records[i].SetActive(true);
@@ -26,12 +27,12 @@ public class MenuManager : MonoBehaviour
 
             if (i == 0)
             {
-                TimeSpan t = TimeSpan.FromSeconds(stats[i]);
+                TimeSpan t = TimeSpan.FromSeconds(Stats.stats[i]);
                 display[i].text = t.ToString("mm':'ss");
             }
 
             else
-                display[i].text = stats[i].ToString();
+                display[i].text = Stats.stats[i].ToString();
         }
 
         PlayerPrefs.Save();
@@ -43,9 +44,17 @@ public class MenuManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadSceneAsync(1);
+        transition.gameObject.SetActive(true);
+        transition.SetTrigger("In"); 
+        StartCoroutine(Play());
     }
 
+    IEnumerator Play()
+    {
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadSceneAsync(1);
+
+    }
     public void ExitGame()
     {
         Application.Quit();

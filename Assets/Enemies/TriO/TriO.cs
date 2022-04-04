@@ -87,6 +87,7 @@ public class TriO : Enemy
     public float angle = 30;
     protected override void Die()
     {
+        GetComponent<Collider2D>().enabled = false;
 
         GameManager.instance.remainingTime += timeDrop + GameManager.instance.dropModifier;
         Stats.stats[1]++;

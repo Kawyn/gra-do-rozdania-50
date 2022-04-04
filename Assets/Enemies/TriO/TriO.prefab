@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9f7b3d68aa4062438edb888ffefc249, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeDrop: 12
+  timeDrop: 25
   maxHealth: 20
   health: 20
   bulletPrefab: {fileID: 6770874421868093531, guid: e788f06e5e68c6d4d8dbb47b93272a65, type: 3}
@@ -256,4 +256,4 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   animator: {fileID: 5103276060569783512}
-  angle: 6.38
+  angle: 15

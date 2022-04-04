@@ -42,9 +42,11 @@ public class GameManager : MonoBehaviour
 
     public GameObject imlazyenemy;
 
-    public int wave = 0;
+    public int wave = 2;
     private float nextWaveTime = 0;
 
+
+    private int amountOfWaves = 0;
 
     public Vector2 minSpawnCoords;
     public Vector2 maxSpawnCoords;
@@ -65,6 +67,7 @@ public class GameManager : MonoBehaviour
     public    AudioSource audioSource;
     private float timeforspawn;
     public bool gameOver = false;
+    public bool spawnedOne = false;
     private void Update()
     {
 
@@ -83,7 +86,23 @@ public class GameManager : MonoBehaviour
                 remainingTime = maxTime;
             remainingTime -= Time.deltaTime;
             time += Time.deltaTime;
-            nextWaveTime += Time.deltaTime;
+            nextWaveTime += Time.deltaTime * (10 + amountOfWaves) / 10;
+        }
+
+        if (Mathf.Floor(Time.realtimeSinceStartup % 3) == 0)
+        {
+            if (!spawnedOne)
+            {
+                StartCoroutine(SpawnEnemy(imlazyenemy, new Vector2(
+                Random.Range(minSpawnCoords.x, maxSpawnCoords.x),
+                Random.Range(minSpawnCoords.y, maxSpawnCoords.y)
+              )));
+                spawnedOne = true;
+            }
+        }
+        else
+        {
+            spawnedOne = false;
         }
 
         if (waves.Count > wave)
@@ -103,10 +122,11 @@ public class GameManager : MonoBehaviour
                 }
 
                 nextWaveTime = 0;
-                wave++;
+                wave = Random.Range(0, waves.Count - 1);
+                amountOfWaves++;
             }
         }
-        else if(nextWaveTime > 0.25f)
+        else if(time > 300)
         {
             StartCoroutine(SpawnEnemy(imlazyenemy, new Vector2(
               Random.Range(minSpawnCoords.x, maxSpawnCoords.x),
@@ -137,6 +157,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator SpawnEnemy(GameObject enemy, Vector2 position)
     {
+        yield return new WaitForSeconds(Random.Range(0, 5));
         GameObject o = Instantiate(indicator, position, Quaternion.identity);
 
         yield return new WaitForSeconds(1);

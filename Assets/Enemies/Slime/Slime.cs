@@ -78,6 +78,7 @@ public class Slime : Enemy
 
     protected override void Die() {
 
+        GetComponent<Collider2D>().enabled = false;
         GameManager.instance.remainingTime += timeDrop + GameManager.instance.dropModifier;
         Stats.stats[1]++;
         animator.SetTrigger("Die");

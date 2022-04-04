@@ -4901,7 +4901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0}
-  damage: 10
+  damage: 25
   mask:
     serializedVersion: 2
     m_Bits: 192

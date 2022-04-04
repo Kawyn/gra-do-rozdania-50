@@ -24,12 +24,31 @@ public class InterfaceManager : MonoBehaviour
     public static bool displayBuyIndicator = false;
     [SerializeField] private GameObject buyIndicator;
 
+    // Transform of the camera to shake. Grabs the gameObject's transform
+    // if null.
+    public Transform camTransform;
+
+    // How long the object should shake for.
+    public float shakeDuration = 0f;
+
+    // Amplitude of the shake. A larger value shakes the camera harder.
+    public float shakeAmount = 0;
+    public float decreaseFactor = 1.0f;
+
+    Vector3 originalPos;
+
+   
+    void OnEnable()
+    {
+        originalPos = camTransform.localPosition;
+    }
     private void Awake()
     {
         instance = this;
-
+        camTransform = Camera.main.transform;
         Player.instance.onGunChange += SetupRemainingBulletsDisplay;
         Player.instance.onGunShot += UpdateRemainingBulletsDisplay;
+        Player.instance.onGunShot += (object sender, OnGunShotEventArgs e) => ShakeCamera(0.1f, 0.1f);
     }
 
 
@@ -42,6 +61,17 @@ public class InterfaceManager : MonoBehaviour
     {
         buyIndicator.SetActive(displayBuyIndicator);
         UpdateRemainingTimeDisplay();
+        if (shakeDuration > 0)
+        {
+            camTransform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
+
+            shakeDuration -= Time.deltaTime * decreaseFactor;
+        }
+        else
+        {
+            shakeDuration = 0f;
+            camTransform.localPosition = originalPos;
+        }
     }
 
     private void UpdateRemainingTimeDisplay()
@@ -87,6 +117,15 @@ public class InterfaceManager : MonoBehaviour
 
         Destroy(remainingBullets[remainingBullets.Count - 1].transform.GetChild(0).gameObject);
 
+    }
+
+    public void ShakeCamera(float a, float b)
+    {
+        if (shakeAmount < a || shakeDuration <= 0)
+        {
+            shakeAmount = a;
+            shakeDuration = b;
+        }
     }
 
     public static InterfaceManager instance;

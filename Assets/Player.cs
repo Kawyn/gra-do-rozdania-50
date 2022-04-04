@@ -32,11 +32,12 @@ public class Player : MonoBehaviour
     public void ReciveDamage(int damage)
     {
         GameManager.instance.audioSource.PlayOneShot(GameManager.instance.reciveDmgClip);
-
+        InterfaceManager.instance.ShakeCamera(0.2f, 0.2f);
         GameManager.instance.remainingTime -= damage;
     }
 
     public ParticleSystem shellParticle;
+
     private void Start()
     {
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
@@ -112,6 +113,8 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
+        InterfaceManager.instance.ShakeCamera(1, 0.3f);
+
         GameManager.instance.audioSource.PlayOneShot(GameManager.instance.dieClip);
         Destroy(shadow);
         m_Animator.SetTrigger("Die");

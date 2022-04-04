@@ -8448,6 +8448,10 @@ MonoBehaviour:
   remainingBulletsOffset: {x: -15, y: 0}
   transition: {fileID: 586772848}
   buyIndicator: {fileID: 819560626}
+  camTransform: {fileID: 0}
+  shakeDuration: 0
+  shakeAmount: 0
+  decreaseFactor: 1
 --- !u!4 &1903558467
 Transform:
   m_ObjectHideFlags: 0
@@ -8527,6 +8531,7 @@ MonoBehaviour:
   dropModifier: 0
   imlazyenemy: {fileID: 5746246944611112913, guid: c0d1c86558be1e342a1554ad90a8bdcc, type: 3}
   wave: 2
+  spawndecrease: 8
   minSpawnCoords: {x: -13, y: -7}
   maxSpawnCoords: {x: 13, y: 6}
   audioSource: {fileID: 1903558469}

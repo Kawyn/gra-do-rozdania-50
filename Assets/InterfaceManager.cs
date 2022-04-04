@@ -48,7 +48,7 @@ public class InterfaceManager : MonoBehaviour
         camTransform = Camera.main.transform;
         Player.instance.onGunChange += SetupRemainingBulletsDisplay;
         Player.instance.onGunShot += UpdateRemainingBulletsDisplay;
-        Player.instance.onGunShot += (object sender, OnGunShotEventArgs e) => ShakeCamera(0.1f, 0.1f);
+        Player.instance.onGunShot += (object sender, OnGunShotEventArgs e) => ShakeCamera(0.07f, 0.07f);
     }
 
 

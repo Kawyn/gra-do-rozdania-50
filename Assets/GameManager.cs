@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
 
     public int wave = 2;
     private float nextWaveTime = 0;
+    public float spawndecrease;
 
 
     private int amountOfWaves = 0;
@@ -86,7 +87,7 @@ public class GameManager : MonoBehaviour
                 remainingTime = maxTime;
             remainingTime -= Time.deltaTime;
             time += Time.deltaTime;
-            nextWaveTime += Time.deltaTime * (10 + amountOfWaves) / 10;
+            nextWaveTime += Time.deltaTime * (spawndecrease + amountOfWaves) / spawndecrease;
         }
 
         if (Mathf.Floor(Time.realtimeSinceStartup % 3) == 0)

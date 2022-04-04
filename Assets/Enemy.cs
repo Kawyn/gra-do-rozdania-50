@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public abstract class Enemy : MonoBehaviour
 {
-    [SerializeField] private int timeDrop = 10;
+    [SerializeField] protected int timeDrop = 10;
 
     [SerializeField] private int maxHealth;
     public int health;
@@ -21,10 +21,13 @@ public abstract class Enemy : MonoBehaviour
 
     protected void Update()
     {
-        Move();
+        if (health > 0)
+        {
+            Move();
 
-        if (!GameManager.instance.gameOver)
-            Attack();
+            if (!GameManager.instance.gameOver)
+                Attack();
+        }
     }
 
     protected abstract void Move();
@@ -38,7 +41,7 @@ public abstract class Enemy : MonoBehaviour
             Die();
     }   
 
-    protected void Die() {
+    protected virtual void Die() {
 
         GameManager.instance.remainingTime += timeDrop + GameManager.instance.dropModifier;
         Stats.stats[1]++;

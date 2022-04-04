@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, velocity.normalized, velocity.magnitude * Time.deltaTime * 2, mask);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, velocity.normalized, velocity.magnitude * Time.deltaTime, mask);
 
         transform.right = velocity;
         transform.position = transform.position + (Vector3)velocity * Time.deltaTime;

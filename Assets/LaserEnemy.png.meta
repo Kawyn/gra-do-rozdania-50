@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3cd5f05997e986f4fb726f6eca44ba79
+guid: e59ec1ce17f270948a2d41ea7f819afa
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -11,6 +11,9 @@ TextureImporter:
   - first:
       213: 1173508795215784017
     second: LaserEnemy_2
+  - first:
+      213: 701437881631168363
+    second: LaserEnemy_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -158,6 +161,27 @@ TextureImporter:
       bones: []
       spriteID: 15822af1804294010800000000000000
       internalID: 1173508795215784017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LaserEnemy_3
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 0
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b67d0a679020cb900800000000000000
+      internalID: 701437881631168363
       vertices: []
       indices: 
       edges: []

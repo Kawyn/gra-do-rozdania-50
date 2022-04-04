@@ -1,19 +1,16 @@
 fileFormatVersion: 2
-guid: 22434f79615d82a4b9b168ffc52b5f44
+guid: 3cd5f05997e986f4fb726f6eca44ba79
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7574909427945169649
-    second: LaserEnemy1.1_0
+      213: 3945088980775070535
+    second: LaserEnemy_0
   - first:
-      213: -6252025000392240431
-    second: LaserEnemy1.1_1
+      213: 6257106470604107411
+    second: LaserEnemy_1
   - first:
-      213: 1580076207235709855
-    second: LaserEnemy1.1_2
-  - first:
-      213: 1341058684664267005
-    second: LaserEnemy1.1_3
+      213: 1173508795215784017
+    second: LaserEnemy_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -103,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: LaserEnemy1.1_0
+      name: LaserEnemy_0
       rect:
         serializedVersion: 2
         x: 0
@@ -117,14 +114,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0d1295420480e690800000000000000
-      internalID: -7574909427945169649
+      spriteID: 74be76aa685cfb630800000000000000
+      internalID: 3945088980775070535
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LaserEnemy1.1_1
+      name: LaserEnemy_1
       rect:
         serializedVersion: 2
         x: 10
@@ -138,14 +135,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d252c403685c39a0800000000000000
-      internalID: -6252025000392240431
+      spriteID: 39ee726fe25b5d650800000000000000
+      internalID: 6257106470604107411
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LaserEnemy1.1_2
+      name: LaserEnemy_2
       rect:
         serializedVersion: 2
         x: 0
@@ -159,29 +156,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f9bb45a50fe8de510800000000000000
-      internalID: 1580076207235709855
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: LaserEnemy1.1_3
-      rect:
-        serializedVersion: 2
-        x: 10
-        y: 0
-        width: 10
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: df0cd5ab4c56c9210800000000000000
-      internalID: 1341058684664267005
+      spriteID: 15822af1804294010800000000000000
+      internalID: 1173508795215784017
       vertices: []
       indices: 
       edges: []
